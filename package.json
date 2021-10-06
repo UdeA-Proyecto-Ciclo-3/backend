@@ -4,7 +4,9 @@
   "description": "BackEnd (API): Proyecto Mision TIC, Ciclo 3 (App  de seguimiento de las ventas de un producto y/o servicio en una empresa)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./src/index.js --exec babel-node",
+    "start":"node ./build/index.js",
+    "build":"babel ./src --out-dir build"
   },
   "keywords": [
     "API",
@@ -20,4 +22,21 @@
     "Lady Carolina Porras González <ydalk3@gmail.com> (https://github.com/ydalk)",
     "Juan Carlos Jiménez Gutiérrez <jcjimenez29@misena.edu.co> (https://github.com/jcarlosj)"
   ],
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.9",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
+    "nodemon": "^2.0.13"
+  }
 }
