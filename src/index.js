@@ -1,8 +1,10 @@
 require("dotenv").config({ path: ".env" });
+global.TextEncoder = require("util").TextEncoder;
 
 const express = require("express"), // Importa Express
   app = express(), // Asigna Express al inicio de la app
   PORT = process.env.PORT || 4000, // Define variable de entorno
+  ConnectDatabase = require("./config/db"), // Configuración Conexión Base de Datos Mongo Atlas
   cors = require("cors"); // Permite Cross-Origin Resource Sharing
 
 / Middlewares */;
@@ -11,8 +13,10 @@ app.use(express.json({ extended: true })); // Habilita uso de JSON (Obliga envia
 
 app.use("/api/productos", require("./routes/productos.routes")); // Define Rutas para API
 
-/ Lanza el Servidor */;
-app.listen(PORT, (error) => {
+/** Conexión a BD Mongo Atlas */
+ConnectDatabase();
+
+/** Lanza el Servidor */ app.listen(PORT, (error) => {
   if (error) throw new Error(error);
   console.log(`Server run on http://localhost:${PORT}`);
 });
