@@ -1,55 +1,17 @@
-import express from "express";
+const express = require("express"), // Importa Express
+  app = express(), // Asigna Express al inicio de la app
+  PORT = process.env.PORT || 4000, // Define variable de entorno
+  cors = require("cors"); // Permite Cross-Origin Resource Sharing
 
-const app = express();
-const puerto = 4000;
-
-const info = {
-  name: "backend",
-  version: "1.0.0",
-  description:
-    "BackEnd (API): Proyecto Mision TIC, Ciclo 3 (App  de seguimiento de las ventas de un producto y/o servicio en una empresa)",
-};
-
+/ Middlewares */;
+app.use(cors()); // Habilita transferencias de datos entre navegadores y servidores.
 app.use(express.json({ extended: true })); // Habilita uso de JSON (Obliga enviar 'Content-Type':'application/json' el header de la petición)
+app.use(morgan("dev")); // registra solicitudes HTTP en la terminal 
 
-app.get("/", (request, response) => {
-  response.json(info);
-  console.log(info);
-});
+//app.use("/api/users", require("./routes/users")); // Define Rutas para API
 
-app.get("/productos", (request, response) => {
-  const productos = ["manzana", "pera", "mora"];
-  response.json({
-    productos,
-  });
-  console.log(productos);
-});
-
-app.post("/productos", (request, response) => {
-  const data = request.body;
-  console.log(data);
-  response.json({
-    mensaje: "se registro un producto",
-  });
-});
-
-app.put("/productos", (request, response) => {
-  const data = request.body;
-  console.log(data);
-  response.json({
-    mensaje: "se actualizo un producto",
-  });
-});
-
-app.delete("/productos/:id", (request, response) => {
-  const data = request.body;
-  console.log(data);
-  console.log(request.params.id);
-  response.json({
-    mensaje: "se eliminó un producto",
-  });
-});
-
-app.listen(puerto, () => {
-  console.log("escuchando en el puerto ", puerto);
+/ Lanza el Servidor */;
+app.listen(PORT, (error) => {
+  if (error) throw new Error(error);
+  console.log(`Server run on http://localhost:${PORT}`);
 });
