@@ -1,7 +1,26 @@
+const Producto = require("../models/Producto");
+
 /** Crea nuevo recurso */
-exports.create = (request, response) => {
-  console.log("POST /api/productos");
-  response.json("POST /api/productos");
+exports.create = async (request, response) => {
+  try {
+    const producto = new Producto(request.body);
+
+    const productoInsertado = await producto.save();
+
+    response.status(200).json({
+      success: true,
+      message: "Creación del recurso exitosa",
+      producto: productoInsertado,
+    });
+  } catch (err) {
+    console.log(err);
+    response.json({
+      success: false,
+      error: {
+        message: "No se creo el recurso",
+      },
+    });
+  }
 };
 
 /** Obtiene todos los recursos */

@@ -1,5 +1,4 @@
 require("dotenv").config({ path: ".env" });
-global.TextEncoder = require("util").TextEncoder;
 
 const express = require("express"), // Importa Express
   app = express(), // Asigna Express al inicio de la app
@@ -16,7 +15,8 @@ app.use("/api/productos", require("./routes/productos.routes")); // Define Rutas
 /** Conexión a BD Mongo Atlas */
 ConnectDatabase();
 
-/** Lanza el Servidor */ app.listen(PORT, (error) => {
+/** Lanza el Servidor */ 
+app.listen(PORT, (error) => {
   if (error) throw new Error(error);
   console.log(`Server run on http://localhost:${PORT}`);
 });

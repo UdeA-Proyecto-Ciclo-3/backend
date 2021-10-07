@@ -18,10 +18,10 @@ const mongoose = require("mongoose"),
         type: Date,
         default: Date.now(),
       },
-      creadoPor: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Usuario",
-      },
+      // creadoPor: {
+      //   type: mongoose.Schema.Types.ObjectId,
+      //   ref: "Usuario",
+      // },
     },
     {
       timestamps: true,
