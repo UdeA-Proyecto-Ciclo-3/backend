@@ -1,4 +1,4 @@
-const morgan = require("morgan");
+require("dotenv").config({ path: ".env" });
 
 const express = require("express"), // Importa Express
   app = express(), // Asigna Express al inicio de la app
