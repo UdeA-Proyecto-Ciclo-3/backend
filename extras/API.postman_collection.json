@@ -66,12 +66,33 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:4000/productos/2",
+					"raw": "localhost:4000/api/productos/2",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
+						"api",
+						"productos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/productos/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/api/productos/2",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
 						"productos",
 						"2"
 					]
@@ -85,13 +106,15 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "localhost:4000/productos",
+					"raw": "localhost:4000/api/productos/2",
 					"host": [
 						"localhost"
 					],
 					"port": "4000",
 					"path": [
-						"productos"
+						"api",
+						"productos",
+						"2"
 					]
 				}
 			},
