@@ -50,9 +50,27 @@ exports.create = async ( request, response ) => {
 };
 
 /** Obtiene todos los recursos */
-exports.getAll = (request, response) => {
-    console.log("GET /api/usuarios");
-    response.json("GET /api/usuarios");
+exports.getAll = async ( request, response ) => {
+
+    try {
+        const users = await Usuario .find() .select( '-password' );
+
+        response .json({
+            registra: true,
+            mensaje: 'Obtiene todos los registros correctamente!',
+            cantidad: users .length,
+            usuarios: users
+        });
+
+    } catch ( error ) {
+        console .log( error );
+        response .status( 500 ) .json({
+            registra: false,
+            error: {
+                message: 'No se han podido obtener los registros de usuario!'
+            }
+        });
+    }
 };
 
 /** Obtiene un recurso por su ID */
