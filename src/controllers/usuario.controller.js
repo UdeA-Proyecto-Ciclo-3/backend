@@ -29,7 +29,7 @@ exports.create = async ( request, response ) => {
 
         console.log( newUser );
 
-        delete newUser[ 'contrasena' ];
+        delete newUser.contrasena;
 
         response .json({
             registra: true,
@@ -101,9 +101,48 @@ exports.getById = async ( request, response ) => {
 };
 
 /** Actualiza un recurso */
-exports.update = (request, response) => {
-    console.log("PUT /api/usuarios");
-    response.json("PUT /api/usuarios");
+exports.update = async ( request, response ) => {
+
+    const
+        user_id = request .params .id,
+        newUserData = request .body;
+
+    console.log( user_id );
+
+    try {
+        const user = await Usuario .findById( user_id );
+
+        /** Valida si NO existe el usuario */
+        if( ! user ) {
+            return response .status( 404 ) .json({
+                registra: false,
+                error: {
+                    mensaje: `No existe el registro con id ${ user_id }!`
+                }
+            });
+        }
+
+        /** Actualiza Usuario */
+        const updatedUser = await Usuario .findOneAndUpdate({ _id: user_id }, newUserData, { new: true } );      // Pasa como parámetro el ID de la Tarea al método de Mongoose.
+
+        console.log( updatedUser );
+
+        response .json({
+            registra: true,
+            mensaje: `Actualiza registro con id ${ user_id } correctamente!`,
+            usuario: updatedUser
+        });
+
+    } catch (error) {
+        console .log( error );
+        response .status( 500 ) .json({
+            success: false,
+            error: {
+                mensaje: `No se ha podido actualizar el registro con id ${ user_id }!`
+            }
+        });
+    }
+
 };
 
 /** Elimina un recurso */
