@@ -12,14 +12,20 @@
 					"name": "/usuarios",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:5000/api/usuarios",
+							"raw": "http://localhost:5003/api/usuarios",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "5003",
 							"path": [
 								"api",
 								"usuarios"
@@ -32,18 +38,24 @@
 					"name": "/usuarios/:id",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:5000/api/usuarios/9",
+							"raw": "http://localhost:5003/api/usuarios/616090557f0be9194192eeeb",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "5003",
 							"path": [
 								"api",
 								"usuarios",
-								"9"
+								"616090557f0be9194192eeeb"
 							]
 						}
 					},
@@ -53,14 +65,24 @@
 					"name": "/usuarios",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"nombre\": \"caroporras\", \n    \"correo\": \"caroporras@correo.co\", \n    \"contrasena\": \"13579\" \n}"
+						},
 						"url": {
-							"raw": "http://localhost:5000/api/usuarios",
+							"raw": "http://localhost:5003/api/usuarios",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "5003",
 							"path": [
 								"api",
 								"usuarios"
@@ -73,18 +95,28 @@
 					"name": "/usuarios/:id",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"nombre\": \"luisamatoma\", \n    \"correo\": \"luisamatoma@correo.co\", \n    \"contrasena\": \"13579\" \n}"
+						},
 						"url": {
-							"raw": "http://localhost:5000/api/usuarios/9",
+							"raw": "http://localhost:5003/api/usuarios/616090557f0be9194192eeeb",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "5003",
 							"path": [
 								"api",
 								"usuarios",
-								"9"
+								"616090557f0be9194192eeeb"
 							]
 						}
 					},
