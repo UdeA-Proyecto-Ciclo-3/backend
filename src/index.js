@@ -10,7 +10,9 @@ const express = require("express"), // Importa Express
 app.use(cors()); // Habilita transferencias de datos entre navegadores y servidores.
 app.use(express.json({ extended: true })); // Habilita uso de JSON (Obliga enviar 'Content-Type':'application/json' el header de la petición)
 
-app.use("/api/productos", require("./routes/productos.routes")); // Define Rutas para API
+// Define Rutas para API
+app.use("/api/productos", require("./routes/productos.routes"));
+app.use('/api/usuarios', require( './routes/usuarios.routes' ) );
 
 /** Conexión a BD Mongo Atlas */
 ConnectDatabase();
