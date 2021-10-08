@@ -53,7 +53,7 @@ exports.create = async ( request, response ) => {
 exports.getAll = async ( request, response ) => {
 
     try {
-        const users = await Usuario .find() .select( '-password' );
+        const users = await Usuario .find() .select( '-contrasena' );
 
         response .json({
             registra: true,
@@ -74,9 +74,30 @@ exports.getAll = async ( request, response ) => {
 };
 
 /** Obtiene un recurso por su ID */
-exports.getById = (request, response) => {
-    console.log("GET /api/usuarios");
-    response.json("GET /api/usuarios");
+exports.getById = async ( request, response ) => {
+
+    const user_id = request .params .id;
+
+    try {
+        const user = await Usuario .findById( user_id ) .select( '-contrasena' );
+
+        console.log( user );
+
+        response .json({
+            registra: true,
+            mensaje: `Obtiene el registro con id ${ user_id }`,
+            usuario: user
+        });
+
+    } catch ( error ) {
+        console .log( error );
+        response .status( 500 ) .json({
+            registra: false,
+            error: {
+                mensaje: `No existe el registro con id ${ user_id }!`
+            }
+        });
+    }
 };
 
 /** Actualiza un recurso */
