@@ -71,9 +71,40 @@ exports.getById = async (request, response) => {
 };
 
 /** Actualiza un recurso */
-exports.update = (request, response) => {
-  console.log("PUT /api/productos");
-  response.json("PUT /api/productos");
+exports.update = async (request, response) => {
+  const idProducto = request.params.id;
+  const producto = request.body;
+
+  try {
+    const productoOriginal = await Producto.findById(idProducto);
+
+    if (!productoOriginal) {
+      return response.json({
+        registra: false,
+        error: {
+          mensaje: "El registro a actualizar no existe",
+        },
+      });
+    }
+    const productoActualizado = await Producto.findOneAndUpdate(
+      { _id: idProducto },
+      producto,
+      { new: true }
+    );
+    response.json({
+      registra: true,
+      mensaje: "Se actualizó el registro con Id " + idProducto,
+      producto: productoActualizado,
+    });
+  } catch (err) {
+    console.log(err);
+    response.json({
+      registra: false,
+      error: {
+        mensaje: "No existe el registro con el Id " + idProducto,
+      },
+    });
+  }
 };
 
 /** Elimina un recurso */
