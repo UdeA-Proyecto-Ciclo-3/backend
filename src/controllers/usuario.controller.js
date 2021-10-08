@@ -146,7 +146,40 @@ exports.update = async ( request, response ) => {
 };
 
 /** Elimina un recurso */
-exports.delete = (request, response) => {
-    console.log("DELETE /api/usuarios");
-    response.json("DELETE /api/usuarios");
+exports.delete = async ( request, response ) => {
+
+    const user_id = request .params .id;
+
+    try {
+        const user = await Usuario .findById( user_id );
+
+        /** Valida si NO existe el usuario */
+        if( ! user ) {
+            return response .status( 404 ) .json({
+                registra: false,
+                error: {
+                    mensaje: `No existe el registro con id ${ user_id }!`
+                }
+            });
+        }
+
+        /** Elimina el usuario */
+        const deletedUser = await Usuario .findOneAndDelete({ _id: user_id }, { new: true } );      // Pasa como parámetro el ID de la Tarea al método de Mongoose.
+
+        response .json({
+            registra: true,
+            mensaje: `Elimina registro con id ${ user_id } correctamente!`,
+            usuario: deletedUser
+        });
+
+    } catch ( error ) {
+        console .log( error );
+        response .status( 500 ) .json({
+            success: false,
+            error: {
+                mensaje: `No se ha podido eliminar el registro con id ${ user_id }!`
+            }
+        });
+    }
+
 };
