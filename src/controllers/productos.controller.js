@@ -108,7 +108,24 @@ exports.update = async (request, response) => {
 };
 
 /** Elimina un recurso */
-exports.delete = (request, response) => {
-  console.log("DELETE /api/productos");
-  response.json("DELETE /api/productos");
+exports.delete = async (request, response) => {
+  try {
+    const producto = await Producto.findByIdAndRemove(request.params.id);
+
+    console.log(producto);
+
+    response.json({
+      registra: true,
+      mensaje: "Se ha eliminado el registro con el Id " + request.params.id,
+      producto,
+    });
+  } catch (err) {
+    console.log(err);
+    response.json({
+      registra: false,
+      error: {
+        mensaje: "No existe el registro con el Id " + request.params.id,
+      },
+    });
+  }
 };
