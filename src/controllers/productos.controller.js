@@ -48,9 +48,26 @@ exports.getAll = async (request, response) => {
 };
 
 /** Obtiene un recurso por su ID */
-exports.getById = (request, response) => {
-  console.log("GET /api/productos");
-  response.json("GET /api/productos");
+exports.getById = async (request, response) => {
+  try {
+    const producto = await Producto.findById(request.params.id);
+
+    console.log(producto);
+
+    response.json({
+      registra: true,
+      mensaje: "Obtiene el registro con el Id " + request.params.id,
+      producto,
+    });
+  } catch (err) {
+    console.log(err);
+    response.json({
+      registra: false,
+      error: {
+        mensaje: "No existe el registro con el Id " + request.params.id,
+      },
+    });
+  }
 };
 
 /** Actualiza un recurso */
