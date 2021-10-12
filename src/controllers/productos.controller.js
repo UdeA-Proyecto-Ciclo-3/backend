@@ -48,19 +48,84 @@ exports.getAll = async (request, response) => {
 };
 
 /** Obtiene un recurso por su ID */
-exports.getById = (request, response) => {
-  console.log("GET /api/productos");
-  response.json("GET /api/productos");
+exports.getById = async (request, response) => {
+  try {
+    const producto = await Producto.findById(request.params.id);
+
+    console.log(producto);
+
+    response.json({
+      registra: true,
+      mensaje: "Obtiene el registro con el Id " + request.params.id,
+      producto,
+    });
+  } catch (err) {
+    console.log(err);
+    response.json({
+      registra: false,
+      error: {
+        mensaje: "No existe el registro con el Id " + request.params.id,
+      },
+    });
+  }
 };
 
 /** Actualiza un recurso */
-exports.update = (request, response) => {
-  console.log("PUT /api/productos");
-  response.json("PUT /api/productos");
+exports.update = async (request, response) => {
+  const idProducto = request.params.id;
+  const producto = request.body;
+
+  try {
+    const productoOriginal = await Producto.findById(idProducto);
+
+    if (!productoOriginal) {
+      return response.json({
+        registra: false,
+        error: {
+          mensaje: "El registro a actualizar no existe",
+        },
+      });
+    }
+    const productoActualizado = await Producto.findOneAndUpdate(
+      { _id: idProducto },
+      producto,
+      { new: true }
+    );
+    response.json({
+      registra: true,
+      mensaje: "Se actualizó el registro con Id " + idProducto,
+      producto: productoActualizado,
+    });
+  } catch (err) {
+    console.log(err);
+    response.json({
+      registra: false,
+      error: {
+        mensaje: "No existe el registro con el Id " + idProducto,
+      },
+    });
+  }
 };
 
 /** Elimina un recurso */
-exports.delete = (request, response) => {
-  console.log("DELETE /api/productos");
-  response.json("DELETE /api/productos");
+exports.delete = async (request, response) => {
+  try {
+    const producto = await Producto.findByIdAndRemove(request.params.id);
+
+    console.log(producto);
+
+    response.json({
+      registra: true,
+      mensaje: "Se ha eliminado el registro con el Id " + request.params.id,
+      producto,
+    });
+  } catch (err) {
+    console.log(err);
+    response.json({
+      registra: false,
+      error: {
+        mensaje: "No existe el registro con el Id " + request.params.id,
+      },
+    });
+  }
 };
