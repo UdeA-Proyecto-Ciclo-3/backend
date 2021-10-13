@@ -20,6 +20,11 @@ router.get(
   ventasController.getById
 );
 
+/** Actualiza un recurso */
+router.put(
+  "/:id",
+  ventasController.update
+)
 
 
 module.exports = router;

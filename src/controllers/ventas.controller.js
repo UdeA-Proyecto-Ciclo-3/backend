@@ -61,3 +61,41 @@ exports.getById = async (request, response) =>{
     });
   }
 };
+
+/** Actualiza un recurso */
+exports.update = async (request, response)=>{
+  const idVenta = request.params.id;
+  const venta = request.body;
+
+  try {
+    const ventaOriginal = await Venta.findById(idVenta);
+
+    if( !ventaOriginal ){
+      return response.json({
+        success: false,
+        error: {
+          message: "El registro a actualizar, no existe",
+        },
+      });
+
+    }
+    const ventaActualizada = await Venta.findOneAndUpdate(
+      { _id: idVenta },
+      venta,
+      { new: true }
+    );
+    response.json({
+      success: true,
+      message: "Se actualizó el registro con Id " + idVenta,
+      venta: ventaActualizada,
+    });
+  } catch (err) {
+    response.json({
+      success: false,
+      error: {
+        message: "No existe el registro con Id " + idVenta,
+      },
+    });
+  }
+
+};
