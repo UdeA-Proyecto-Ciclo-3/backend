@@ -21,3 +21,23 @@ exports.create = async (request, response) => {
     });
   }
 };
+
+/** Obtiene un recurso por su ID */
+exports.getById = async (request, response) =>{
+ 
+  try {
+      const venta = await Venta.findById(request.params.id);
+      response.status(200).json({
+        success: true,
+        message: "Obtiene el registro con el ID " + request.params.id,
+        venta: venta,
+      });
+  } catch (err) {
+    response.status(500).json({
+      success: false,
+      error: {
+        message: "No exise el registro con el Id " + request.params.id,
+      },
+    });
+  }
+};
