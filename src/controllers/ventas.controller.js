@@ -22,6 +22,26 @@ exports.create = async (request, response) => {
   }
 };
 
+exports.getAll = async(request, response) => {
+  try {
+    const ventas = await Venta.find();
+    console.log(ventas)
+    response.status(200).json({
+      success: true,
+      message: "Obtiene todos los registros correctamente",
+      ventas,
+    });       
+  } catch (err) {
+    console.log(err)
+    response.json({
+      success: false,
+      error: {
+        message: "No se obtuvieron los registros de las ventas",
+      },
+    });
+  }
+}
+
 /** Obtiene un recurso por su ID */
 exports.getById = async (request, response) =>{
  

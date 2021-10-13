@@ -8,10 +8,18 @@ router.post(
   ventasController.create
 );
 
+/** Obtiene todos los recursos */
+router.get(
+  "/",
+  ventasController.getAll
+);
+
 /** Obtiene un recurso por su ID */
 router.get(
   "/:id",
   ventasController.getById
 );
+
+
 
 module.exports = router;
