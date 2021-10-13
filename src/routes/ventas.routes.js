@@ -24,7 +24,13 @@ router.get(
 router.put(
   "/:id",
   ventasController.update
-)
+);
+
+/** Elimina un recurso */
+router.delete(
+  "/:id",
+  ventasController.delete
+);
 
 
 module.exports = router;
