@@ -8,4 +8,10 @@ router.post(
   vendedoresController.create
 );
 
+/** Obtiene todos los recursos */
+router.get(
+    "/",
+    vendedoresController.getAll
+)
+
 module.exports = router;

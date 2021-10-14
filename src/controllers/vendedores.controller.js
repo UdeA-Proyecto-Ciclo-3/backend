@@ -21,3 +21,21 @@ exports.create = async (request, response) => {
     }
 };
 
+exports.getAll = async (request, response) => {
+    try {
+        const vendedores = await Vendedor.find();
+        response.status(200).json({
+            success: true,
+            message: "Obtiene todos los registros correctamente",
+            vendedores,
+        });
+    } catch (err) {
+        console.log(err)
+        response.json({
+            success: false,
+            error: {
+                message: "No se obtuvierpn los registros de los vendedores",
+            }
+        });
+    }
+};
