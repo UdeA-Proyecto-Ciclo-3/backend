@@ -16,9 +16,21 @@ exports.googleLogin = async (request, response) => {
             idToken: tokenId,
             audience: CLIENT_ID
         }),
-        payload = ticket .getPayload();
+        payload = ticket .getPayload(),
+        { name, given_name, family_name, picture, email, email_verified } = payload;
 
-    console .log( payload );
+    // ! Verificacion de correo
+    if( email_verified ) {
+        const userFound = await Usuario .findOne({ correo: email });
 
-    response .json( 'googleLogin' );
+        // ! Verifica si el usuario encontrado esta registrado
+        if( ! userFound ) {
+            console.info( `Este usuario no existe, registrate primero.` );
+            return response .json({
+                error: {
+                    mensaje: `Este usuario no existe, registrate primero.`
+                }
+            })}
+        }
+
 };
