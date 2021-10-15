@@ -8,7 +8,7 @@ exports.create = async (request, response) => {
         response.status(200).json({
             success: true,
             message: "Creación del recurso exitosa",
-            venta: vendedorInsertado,
+            vendedor: vendedorInsertado,
         });
     } catch (err) {
         console.log(err)
@@ -38,4 +38,25 @@ exports.getAll = async (request, response) => {
             }
         });
     }
+};
+
+/** Obtiene un recurso por su ID */
+exports.getById = async (request, response) =>{
+ 
+  try {
+      const vendedor = await Vendedor.findById(request.params.id);
+      response.status(200).json({
+        success: true,
+        message: "Obtiene el registro con el ID " + request.params.id,
+        vendedor,
+      });
+  } catch (err) {
+      console.log(err)
+    response.status(500).json({
+      success: false,
+      error: {
+        message: "No exise el registro con el Id " + request.params.id,
+      },
+    });
+  }
 };

@@ -14,4 +14,10 @@ router.get(
     vendedoresController.getAll
 )
 
+/** Obtiene un recurso por su ID */
+router.get(
+  "/:id",
+  vendedoresController.getById
+);
+
 module.exports = router;
