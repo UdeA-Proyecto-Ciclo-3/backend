@@ -20,4 +20,16 @@ router.get(
   vendedoresController.getById
 );
 
+/** Actualiza un recurso */
+router.put(
+  "/:id",
+  vendedoresController.update
+);
+
+/** Elimina un recurso */
+router.delete(
+  "/:id",
+  vendedoresController.delete
+);
+
 module.exports = router;
