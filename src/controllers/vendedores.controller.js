@@ -99,3 +99,36 @@ exports.update = async (request, response)=>{
   }
 
 };
+
+exports.delete = async ( request, response ) => {
+    const idVendedor = request.params.id;
+
+    try {
+        const vendedor = await Vendedor.findById(idVendedor);
+
+        if( !vendedor){
+            return response.json({
+                success: false,
+                error: {
+                    message: "No existe el registro con Id " + idVendedor,
+                }
+            });
+
+        };
+    const vendedorEliminado = await Vendedor.findByIdAndRemove(idVendedor);
+    response.json({
+        success: true,
+        message: "Se eliminó el registro con Id " + idVendedor,
+        vendedor: vendedorEliminado,
+    })
+            
+    } catch (error) {
+        response.json({
+            success: false,
+            error: {
+                message: "No se pudo eleimiar el registro con Id " + idVendedor,
+            }
+        });
+    }
+
+};
