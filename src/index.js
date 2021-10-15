@@ -11,6 +11,7 @@ app.use(cors()); // Habilita transferencias de datos entre navegadores y servido
 app.use(express.json({ extended: true })); // Habilita uso de JSON (Obliga enviar 'Content-Type':'application/json' el header de la petición)
 
 // Define Rutas para API
+app.use('/api/auth', require( './routes/auth.routes' ) );
 app.use("/api/productos", require("./routes/productos.routes"));
 app.use('/api/usuarios', require( './routes/usuarios.routes' ) );
 
