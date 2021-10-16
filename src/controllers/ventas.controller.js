@@ -3,8 +3,8 @@ const Venta = require("../models/Venta");
 exports.create = async (request, response) => {
   try {
     const venta = new Venta(request.body);
+    console.log(venta);
     const ventaInsertada = await venta.save();
-    console.log(ventaInsertada);
 
     response.status(200).json({
       success: true,
