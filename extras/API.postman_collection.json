@@ -262,14 +262,18 @@
 						}
 					},
 					"response": []
+
 				}
 			]
 		},
 		{
+
 			"name": "Ventas",
 			"item": [
 				{
 					"name": "/ventas",
+
+
 					"request": {
 						"method": "POST",
 						"header": [
@@ -281,7 +285,10 @@
 						],
 						"body": {
 							"mode": "raw",
+
 							"raw": "{\n\t\"factura\" : \"001\",\n\t\"cliente\" : \"Pepito Perez\",\n\t\"descripcion\" : \"Botas\",\n\t\"total\" : \"$120000\",\n\t\"fechaPago\" : \"2021-09-05\",\n\t\"responsable\" : \"Miguel\",\n\t\"estado\" : \"Creacion\"\n}",
+
+							
 							"options": {
 								"raw": {
 									"language": "json"
@@ -289,7 +296,10 @@
 							}
 						},
 						"url": {
+
 							"raw": "http://localhost:5000/api/ventas",
+
+						
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -298,6 +308,7 @@
 							"path": [
 								"api",
 								"ventas"
+
 							]
 						}
 					},
