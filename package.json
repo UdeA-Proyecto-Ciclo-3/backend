@@ -23,6 +23,7 @@
     "Juan Carlos Jiménez Gutiérrez <jcjimenez29@misena.edu.co> (https://github.com/jcarlosj)"
   ],
   "dependencies": {
+    "@babel/runtime": "^7.15.4",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -30,14 +31,18 @@
     "google-auth-library": "^7.10.1",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.7",
+    "mongoose": "^6.0.11",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.8",
     "@babel/preset-env": "^7.15.6",
     "nodemon": "^2.0.13"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
