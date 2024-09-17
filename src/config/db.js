@@ -4,8 +4,8 @@ require("dotenv").config({ path: ".env" });
 const ConnectDatabase = async () => {
   try {
     await mongoose.connect(process.env.DB_MONGO_ATLAS, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
     });
     console.log("Connected MongoDB");
   } catch (error) {

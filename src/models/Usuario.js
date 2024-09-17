@@ -6,10 +6,15 @@ const mongoose = require("mongoose"),
         trim: true,
         required: true,
       },
-      rol: [{                               // Establece relación de 1 a N
-        ref: 'Role',                        // Referencia al Schema Role
-        type: Schema .Types .ObjectId       // ID asignado dentro del Schema de Role
-      }],
+      rol: {
+        type: String,
+        trim: true,
+        required: true,
+      },
+      // rol: [{                               // Establece relación de 1 a N
+      //   ref: 'Role',                        // Referencia al Schema Role
+      //   type: Schema .Types .ObjectId       // ID asignado dentro del Schema de Role
+      // }],
       correo: {
         type: String,
         unique: true,

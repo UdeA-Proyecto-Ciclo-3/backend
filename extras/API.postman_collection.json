@@ -1,124 +1,320 @@
 {
 	"info": {
-		"_postman_id": "cab239f8-d304-490a-8e97-e0b07bdcabfa",
+		"_postman_id": "7af8df2f-42e6-4a16-af7d-23b1d4cae8d9",
 		"name": "API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "/",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:4000/",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						""
-					]
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "/usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5003/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/usuarios/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5003/api/usuarios/616090557f0be9194192eeeb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"api",
+								"usuarios",
+								"616090557f0be9194192eeeb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/usuarios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"nombre\": \"caroporras\", \n    \"correo\": \"caroporras@correo.co\", \n    \"contrasena\": \"13579\" \n}"
+						},
+						"url": {
+							"raw": "http://localhost:5003/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/usuarios/:id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"nombre\": \"luisamatoma\", \n    \"correo\": \"luisamatoma@correo.co\", \n    \"contrasena\": \"13579\" \n}"
+						},
+						"url": {
+							"raw": "http://localhost:5003/api/usuarios/616090557f0be9194192eeeb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"api",
+								"usuarios",
+								"616090557f0be9194192eeeb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/usuarios/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"9"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "/productos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:4000/productos",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"productos"
-					]
+			"name": "Products",
+			"item": [
+				{
+					"name": "/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/productos",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/productos/2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/productos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"productos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/productos/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/productos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"productos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/productos/2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/productos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"productos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/productos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/productos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"productos",
+								"2"
+							]
+						}
+					},
+					"response": []
+
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "/productos/2",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "localhost:4000/productos/2",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"productos",
-						"2"
-					]
+
+			"name": "Ventas",
+			"item": [
+				{
+					"name": "/ventas",
+
+
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+
+							"raw": "{\n\t\"factura\" : \"001\",\n\t\"cliente\" : \"Pepito Perez\",\n\t\"descripcion\" : \"Botas\",\n\t\"total\" : \"$120000\",\n\t\"fechaPago\" : \"2021-09-05\",\n\t\"responsable\" : \"Miguel\",\n\t\"estado\" : \"Creacion\"\n}",
+
+							
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+
+							"raw": "http://localhost:5000/api/ventas",
+
+						
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"ventas"
+
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "/productos/2",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:4000/api/productos/2",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"api",
-						"productos",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/productos/2",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:4000/api/productos/2",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"api",
-						"productos",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/productos",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "localhost:4000/api/productos/2",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"api",
-						"productos",
-						"2"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	]
 }
